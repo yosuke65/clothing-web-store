@@ -1,11 +1,22 @@
+//@ts-nocheck
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
+import { useNavigate } from "react-router";
 import Button from "../button/button.component";
 import "./cart-dropdown.styles.scss";
 import CartItem from "../cart-item/cart-item.component";
 
 const CartDropdown = () => {
   const { cartItems } = useContext(CartContext);
+  const navigate = useNavigate();
+
+  const goToCheckoutHandler = () => {
+    navigate("/checkout");
+  };
+
+  const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
+  const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen);
+
   return (
     <div className="cart-dropdown-container">
       <div className="cart-items">
@@ -13,7 +24,13 @@ const CartDropdown = () => {
           <CartItem key={item.id} cartItem={item} />
         ))}
       </div>
-      <Button buttonType="inverted" onClick={() => {}}>
+      <Button
+        buttonType="inverted"
+        onClick={() => {
+          goToCheckoutHandler();
+          toggleIsCartOpen();
+        }}
+      >
         GO TO CHECKOUT
       </Button>
     </div>
