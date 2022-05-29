@@ -1,12 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import {
-  onAuthStateChangedListener,
-  createUserDocumentFromAuth,
-  getCurrentUser,
-} from "./utils/firebase/firebase.utils";
-
 import { Routes, Route } from "react-router";
 import Home from "./routes/home/home.component";
 import Navigation from "./routes/navigation/navigation.component";
@@ -15,6 +9,8 @@ import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
 import { checkUserSession } from "./store/user/user.action";
 
+import { GlobalStyle } from "./global.styles";
+
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -22,6 +18,8 @@ const App = () => {
   }, [dispatch]);
 
   return (
+    <>
+    <GlobalStyle/>
     <Routes>
       <Route path="/" element={<Navigation />}>
         <Route index element={<Home />}></Route>
@@ -30,6 +28,7 @@ const App = () => {
         <Route path="checkout" element={<Checkout />}></Route>
       </Route>
     </Routes>
+    </>
   );
 };
 

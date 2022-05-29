@@ -1,6 +1,6 @@
 //@ts-nocheck
-import { CartItemContainer, ItemCount, ShoppingIcon } from './cart-icon.styles.jsx';
-import './cart-icon.styles.jsx'
+import { CartItemContainer, ItemCount, ShoppingIcon } from './cart-icon.styles.tsx';
+import './cart-icon.styles.tsx'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCartCount, selectIsCartOpen } from '../../store/cart/cart.selector';
 import { setIsCartOpen } from '../../store/cart/cart.action';
